@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react'
+import Body from './components/Body'
+import './App.css'
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Loginpages from './components/Loginpages'
+import Signup from './components/Signup'
+import Adminpanel from './components/Adminpanel'
+import AddUser from './components/AddUser'
+import Trackingdata from './components/Trackingdata'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <RouterProvider router={appRouter} />
     </div>
-  );
+  )
 }
 
-export default App;
+const AppLayout = () => {
+  return (
+    <div>
+      <Outlet />
+    </div>
+  )
+}
+
+const appRouter = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [
+      {
+        path: '/signup',
+        element: <Signup />,
+      },
+      {
+        path: '/',
+        element: <Loginpages />,
+      },
+      {
+        path: '/browse',
+        element: <Body />,
+      },
+      {
+        path: '/admin',
+        element: <Adminpanel />,
+      },
+      {
+        path: '/admin/adduser',
+        element: <AddUser />,
+      },
+      {
+        path: '/browse/tracking',
+        element: <Trackingdata />,
+      },
+    ],
+  },
+])
+
+export default App

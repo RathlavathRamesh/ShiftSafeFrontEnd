@@ -8,7 +8,7 @@ const Adminpanel = () => {
   const navigate = useNavigate()
   const [userdata,setUserData]=useState(null);
   const getdata=async()=>{
-    const url = 'http://localhost:3001/api/getitems'
+    const url = 'http://localhost:3001/api/item/getItems'
     const response=await fetch(url);
     const data=await response.json();
     setTimeout(()=>{setUserData(data)},1000)
@@ -60,4 +60,3 @@ const Adminpanel = () => {
 }
 
 export default Adminpanel
-

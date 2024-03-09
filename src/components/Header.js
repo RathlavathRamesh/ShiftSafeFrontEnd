@@ -1,11 +1,11 @@
 import Cookie from 'js-cookie'
-import { Link ,useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const navigate = useNavigate()
-  const logoutButton=()=>{
+  const logoutButton = () => {
     Cookie.remove('jwt_token')
-    navigate('/');
+    navigate('/')
   }
   return (
     <div className="bg-white h-[15vh] font-sans">
@@ -24,12 +24,19 @@ const Header = () => {
           <Link to="/browse">
             <li className="pl-4 md:pl-8 hover:text-red-500">Home</li>
           </Link>
-         <Link to='/browse/tracking'>
-         <li className="pl-4 md:pl-8 hover:text-red-500">Track Shipment</li>
-         </Link>
-            <button className="pl-4 md:pl-8 pr-4 md:pr-5 hover:text-red-500" onClick={logoutButton}>
-              Logout
-            </button>
+          <Link to="/AdminLogin/">
+            <li className="pl-4 md:pl-8 hover:text-red-500">Admin</li>
+          </Link>
+
+          <Link to="/trackingShipment">
+            <li className="pl-4 md:pl-8 hover:text-red-500">Track Shipment</li>
+          </Link>
+          <button
+            className="pl-4 md:pl-8 pr-4 md:pr-5 hover:text-red-500"
+            onClick={logoutButton}
+          >
+            Logout
+          </button>
         </ul>
       </div>
       <hr className="bg-teal-400 h-12"></hr>

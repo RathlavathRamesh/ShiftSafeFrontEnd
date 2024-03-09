@@ -7,6 +7,8 @@ import Signup from './components/Signup'
 import Adminpanel from './components/Adminpanel'
 import AddUser from './components/AddUser'
 import Trackingdata from './components/Trackingdata'
+import AdminLogin from './components/AdminLogin'
+import TrackShipment from './components/TrackShipment'
 function App() {
   return (
     <div>
@@ -51,6 +53,14 @@ const appRouter = createBrowserRouter([
       {
         path: '/browse/tracking',
         element: <Trackingdata />,
+      },
+      {
+        path: '/AdminLogin/',
+        element: <AdminLogin />,
+      },
+      {
+        path: '/trackingShipment',
+        element: <TrackShipment />,
       },
     ],
   },

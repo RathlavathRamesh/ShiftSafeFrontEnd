@@ -4,8 +4,9 @@ import { Link, useNavigate } from 'react-router-dom'
 const Header = () => {
   const navigate = useNavigate()
   const logoutButton = () => {
-    Cookie.remove('jwt_token')
-    navigate('/')
+    Cookie.remove('user_token')
+    Cookie.remove('admin_token')
+    navigate('/userLogin')
   }
   return (
     <div className="bg-white h-[15vh] font-sans">
@@ -21,7 +22,7 @@ const Header = () => {
           </p>
         </div>
         <ul className="flex items-center mr-4 mt-6 md:mt-10 mb-2 md:mb-5 text-xl md:text-xl text-center hover:cursor-pointer">
-          <Link to="/browse">
+          <Link to="/">
             <li className="pl-4 md:pl-8 hover:text-red-500">Home</li>
           </Link>
           <Link to="/AdminLogin/">

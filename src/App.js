@@ -35,11 +35,11 @@ const appRouter = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: '/',
+        path: '/userLogin',
         element: <Loginpages />,
       },
       {
-        path: '/browse',
+        path: '/',
         element: <Body />,
       },
       {

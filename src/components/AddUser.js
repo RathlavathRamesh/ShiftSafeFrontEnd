@@ -12,7 +12,7 @@ const AddUser = () => {
       item_id: itemId.current.value,
     }
     const data1 = JSON.stringify(userDetails)
-    const url = 'http://localhost:3001/api/additem'
+    const url = 'http://localhost:3001/api/item/additem'
     const response = await fetch(url, {
       method: 'POST',
       headers: {

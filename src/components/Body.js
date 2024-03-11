@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
+import Cookie from 'js-cookie'
+import { useNavigate } from 'react-router-dom';
 const Body = () => {
+  const navigate=useNavigate();
+
+  useEffect(()=>{
+    const userToken=Cookie.get("user_token");
+    if(userToken===undefined){
+       navigate("/userLogin")
+    }
+  },[])
   return (
     <div>
       <Header />

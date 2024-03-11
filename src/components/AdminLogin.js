@@ -1,4 +1,4 @@
-import React ,{ useRef, useState } from 'react'
+import React ,{ useEffect, useRef, useState } from 'react'
 import {useNavigate } from 'react-router-dom'
 
 import Cookie from 'js-cookie'
@@ -21,6 +21,7 @@ const AdminLogin = () => {
           })
           const data = await response.json()
           if (response.ok === true) {
+            console.log(data)
             handleLoginSuccess(data.jwtToken)
           } else {
             setErrorMessage(response.err)
@@ -28,16 +29,20 @@ const AdminLogin = () => {
           }
     }
     const handleLoginSuccess = (jwtToken) => {
-        Cookie.set('jwt_token', jwtToken, { expires: 150 })
-        console.log(jwtToken);
+        Cookie.set('admin_token', jwtToken, { expires: 150 })
         navigate('/admin')
       }
-
 const username = useRef(null)
   const password = useRef(null)
   const navigate = useNavigate()
-
   const [errorMessage, setErrorMessage] = useState(false)
+    useEffect(()=>{
+      const adminToken=Cookie.get("admin_token");
+  console.log(adminToken)
+    if(adminToken!==undefined){
+      navigate("/admin")
+    }
+    },[])
   return (
     <div>
       <div className=" flex justify-center items-center  bg-teal-500 h-screen">

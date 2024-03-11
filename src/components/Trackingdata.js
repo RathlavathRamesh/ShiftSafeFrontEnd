@@ -1,5 +1,19 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookie from "js-cookie";
 const Trackingdata = (usedata) => {
+   const navigate=useNavigate();
+  useEffect(()=>{
+    const userToken=Cookie.get("user_token");
+    if(userToken===undefined){
+       navigate("/userLogin")
+    }
+  },[])
   // const {usedata}=usedata
+  const orderedUrl="https://cdni.iconscout.com/illustration/premium/thumb/order-confirmation-5365232-4500195.png?f=webp";
+  const dispatchUrl="https://www.clickpost.ai/hubfs/featured%20images/Updated%20blog%20banner%20images%20Mar%2022/d2c-direct-to-consumer-shipping.webp#keepProtocol";
+  const intransitUrl="https://www.postgrid.com/wp-content/uploads/2021/01/Track.png";
+  const outForDeliveryUrl="https://roadcast.in/static/img/mod/hyper_banner.png";
   const {item_id,order_status,user_name}=usedata.usedata;
    return (
      <div className="bg-[url(https://ecomexpress.in/_nuxt/track-shipment-bg.2ff3aeb0.png)] h-screen">
@@ -22,11 +36,31 @@ const Trackingdata = (usedata) => {
              </div>
            </div>
            <div>
-             <img
-               src="https://img.freepik.com/premium-vector/delivery-truck-with-map-location-route-path-concept-cargo-van-moving-fast-express-delivery-service-icon-with-van-destination-point-point-navigation-delivery-way-geo-location-location-pin_435184-1083.jpg"
+           {order_status==="ordered" && (<img
+               src={orderedUrl}
                alt="Trackinglogo"
                className="h-[300px] w-[400px] "
-             />
+             />)}
+              {order_status==="ordered" && (<img
+               src={orderedUrl}
+               alt="Trackinglogo"
+               className="h-[300px] w-[400px] "
+             />)}
+              {order_status==="dispatch" && (<img
+               src={dispatchUrl}
+               alt="Trackinglogo"
+               className="h-[300px] w-[400px] "
+             />)}
+              {order_status==="intransit" && (<img
+               src={intransitUrl}
+               alt="Trackinglogo"
+               className="h-[300px] w-[400px] "
+             />)}
+              {order_status==="out for delivery" && (<img
+               src={outForDeliveryUrl}
+               alt="Trackinglogo"
+               className="h-[300px] w-[400px] "
+             />)}
            </div>
          </div>
        </div>

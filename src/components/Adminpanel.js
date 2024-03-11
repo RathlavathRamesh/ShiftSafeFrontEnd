@@ -22,7 +22,8 @@ const Adminpanel = () => {
     e.preventDefault()
     navigate('/admin/adduser')
   }
-  const jwtToken=Cookie.get('jwt_token');
+
+  const jwtToken=Cookie.get("admin_token");
   if(jwtToken===undefined){
     navigate('/');
   }
@@ -37,23 +38,10 @@ const Adminpanel = () => {
           Add Order
         </button>
       </div>
-      <div className="bg-white">
-        <ul className="flex items-center justify-evenly mt-4 sm:mt-8 md:mt-12 lg:mt-16 xl:mt-20 font-medium text-xl text-center">
-          <div className="w-4/12">
-            <li className="hover:text-orange-400">Name</li>
-          </div>
-          <div className="w-4/12">
-            <li className="hover:text-orange-400">OrderId</li>
-          </div>
-          <div className="w-4/12">
-            <li className="hover:text-orange-400">Status</li>
-          </div>
-        </ul>
-             {/* {console.log(userdata[0])}  */}
-           {userdata && (
-              userdata.map((item)=>(<Userdata item={item} key={item._id}/>))
-              
-           )}  
+      <div className="bg-white flex flex-row justify-center flex-wrap">
+        {/* {console.log(userdata[0])}  */}
+        {userdata &&
+          userdata.map((item) => <Userdata item={item} key={item._id} />)}
       </div>
     </div>
   )

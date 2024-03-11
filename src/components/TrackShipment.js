@@ -31,21 +31,21 @@ const TrackShipment = () => {
       alert('Item not found')
     }
   }
-
-  const jwtToken = Cookie.get('jwt_token')
-  if (jwtToken === undefined) {
-    navigate('/')
-  }
-
+  useEffect(()=>{
+    const userToken=Cookie.get("user_token");
+    if(userToken===undefined){
+       navigate("/userLogin")
+    }
+  },[])
   return (
     <div>
       <Header />
-      <div className="flex flex-row mt-40">
-        <div className="mx-32">
+      <div className="flex flex-row mt-32 bg-transparent">
+        <div className="mx-28">
           <img
-            src="https://img.freepik.com/premium-vector/online-parcel-delivery-service-concept-mobile-app-concept-hand-holding-phone-with-parcel-delivery-application-display-courier-truck-with-boxes-courier-uniform-flying-drone-with-order-box_608021-263.jpg"
+            src="https://img.freepik.com/premium-vector/package-sent-isometric-illustration-suitable-mobile-app-website-banner-diagrams-infographics-other-graphic-assets_210682-492.jpg?size=626&ext=jpg&ga=GA1.1.1249841798.1684600786&semt=ais"
             alt="this is trackshipment logo"
-            className="h-[40vh] w-full"
+            className="h-[70vh] w-[70vw]"
           />
         </div>
         {!userData && (

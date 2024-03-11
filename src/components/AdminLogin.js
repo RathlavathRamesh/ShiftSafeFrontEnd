@@ -67,7 +67,7 @@ const username = useRef(null)
             />
             <label className="mt-2 ml-5  px-1 text-lg">Password</label>
             <input
-              type="text"
+              type="password"
                ref={password}
               placeholder="Enter Password"
               className="mt-2 ml-5 mr-5 border-2 pt-1 border-gray-500 text-md rounded-lg h-9  px-3"

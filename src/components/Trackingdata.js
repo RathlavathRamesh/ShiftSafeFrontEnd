@@ -14,6 +14,7 @@ const Trackingdata = (usedata) => {
   const dispatchUrl="https://www.clickpost.ai/hubfs/featured%20images/Updated%20blog%20banner%20images%20Mar%2022/d2c-direct-to-consumer-shipping.webp#keepProtocol";
   const intransitUrl="https://www.postgrid.com/wp-content/uploads/2021/01/Track.png";
   const outForDeliveryUrl="https://roadcast.in/static/img/mod/hyper_banner.png";
+  const shippedUrl="https://static.vecteezy.com/system/resources/previews/010/181/398/non_2x/order-shipped-order-closed-order-canceled-concept-with-people-character-parcel-tracking-system-digital-shopping-online-purchase-distribution-abstract-illustration-set-vector.jpg "
   const {item_id,order_status,user_name}=usedata.usedata;
    return (
      <div className="bg-[url(https://ecomexpress.in/_nuxt/track-shipment-bg.2ff3aeb0.png)] h-screen">
@@ -61,6 +62,11 @@ const Trackingdata = (usedata) => {
                alt="Trackinglogo"
                className="h-[300px] w-[400px] "
              />)}
+             {order_status==="shipped" &&(
+             <img src={shippedUrl}
+              alt="Trackinglogo"
+              className="h-[300px] w-[400px]"/>
+             )}
            </div>
          </div>
        </div>
